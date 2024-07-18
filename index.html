@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Anniversary Surprise!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+      background-color: #ffe6e6;
+      /* Light pink */
+    }
+
+    /* Style the header with a romantic font and color */
+    #header {
+      margin-bottom: 50px;
+      color: #ff6b6b;
+      /* Red */
+      /* font-family: 'Pacifico', cursive; */
+      /* Use a romantic font (Google Font: Pacifico) */
+      text-shadow: 1px 1px #ffffff;
+      /* Add a subtle text shadow for effect */
+    }
+
+    /* Style the loving feelings section */
+    .loving-feelings {
+      padding: 20px;
+      background-color: #ffcccc;
+      /* Light coral */
+      border-radius: 10px;
+      /* Add rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      /* Add a soft shadow */
+      line-height: 1.6;
+      /* Increase line height for better readability */
+      position: relative;
+      /* Add this line to position hearts relative to the loving-feelings section */
+    }
+
+    /* Add floating hearts for a romantic effect */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6b6b;
+      /* Red */
+      animation: float 3s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    /* Style the counter section */
+    #counter {
+      font-size: 28px;
+      color: #ff6b6b;
+      /* Red */
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    /* Style the emojis */
+    #emoji-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 24px;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Style the audio player */
+    audio {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+
+    .love-feelings {
+      /* Use the same style as the loving-feelings div */
+      padding: 20px;
+      background-color: #ffcccc;
+      /* Light coral */
+      border-radius: 10px;
+      /* Add rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      /* Add a soft shadow */
+      line-height: 1.6;
+      /* Increase line height for better readability */
+      position: relative;
+      /* Add this line to position hearts relative to the love-feelings div */
+    }
+
+    .love-feelings img {
+      /* Add some spacing between images */
+      margin: 5px;
+      max-width: 100%;
+    }
+
+    /* Add floating hearts to the love-feelings div */
+    .love-feelings .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6b6b;
+      /* Red */
+      animation: float 3s linear infinite;
+      pointer-events: none;
+    }
+
+    img {
+      height: 500px;
+
+    }
+
+
+    #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--confetti-color, #ff6b6b);
+            animation: shootConfetti 3s linear, fall 5s linear 3s;
+        }
+
+        .confetti.noodle {
+            width: 2px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .confetti.leaf {
+            width: 15px;
+            height: 15px;
+            border-radius: 50% 50% 0 50%;
+        }
+
+        .confetti.square {
+            width: 15px;
+            height: 15px;
+        }
+
+        @keyframes shootConfetti {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(var(--x-move)) translateY(var(--y-move)) rotate(720deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0.5;
+            }
+        }
+
+/* CSS */
+.button {
+  align-items: center;
+  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Codec cold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 54px;
+  justify-content: center;
+  letter-spacing: .4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:active {
+  outline: 0;
+}
+
+.button:hover {
+  outline: 0;
+}
+
+.button span {
+  transition: all 200ms;
+}
+
+.button:hover span {
+  transform: scale(.9);
+  opacity: .75;
+}
+
+@media screen and (max-width: 991px) {
+  .button {
+    font-size: 15px;
+    height: 50px;
+  }
+
+  .button span {
+    line-height: 50px;
+  }
+}
+  </style>
+</head>
+
+<body>
+    <div id="emoji-container"></div>
+    <div id="confetti-container"></div>
+
+
+  <div id="header">
+    <h1>Happy Birthday Sara!!!!!</h1>
+    <div class="loving-feelings">
+        <p>Hey Sara! Happy Birthday. I'm really glad that I am getting the opportunity to celebrate your birthday. I am really happy to be with you and i wanna be forever with you. I hope your day is going well. I really wish the best of everything for you.</p>
+
+
+
+      <p>Remember how we met? On 03/29/2024 12:15 AM i saw that you were listening to Srotoshinni. Found you from a random server named Arcadian Cafe. That was the beginning of a colorful journey of my life. I am really happy to find you and i want you to know that i will be with you as long as you are with me. I'll try my best to keep you happy. Again, Happy Birthday. Have one of the greatest birthdays of your life!!!</p></br>
+    </div>
+  </div>
+
+
+  <div class="love-feelings">
+    <p>I bought some gifts for you. Sorry i couldn't send them to you. Here are the pictures.</p></br>
+
+    
+    <img src="1.jpg" id="img4"><br>
+    <img src="2.jpg" id="img5"><br>
+    <img src="3.jpg" id="img6"><br>
+    <img src="4.jpg" id="img7"><br>
+    <img src="5.jpg" id="img8"></br>
+    <img src="6.jpg" id="img9"><br>
+   
+    <p>Welp, thanks for visiting. There are some more things down below. Make sure to check everything. And
+      yeah overall, Love you!!!</p>
+
+
+      <h1>Another Gift For You:</h1>
+
+      <center><button class="button" idrole="button"><span class="text">Click Me!!!!!</span></button></center>
+      
+  </div>
+
+
+
+
+  <div id="counter"></div>
+
+
+
+  <script src="script.js"></script>
+
+  <!-- <p>I've sung some songs for my Sara. Enjoy listening!</p>
+    <audio controls>
+    <source src="chiro_odhora_mp3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    <a href="chiro_odhora_mp3.mp3" download>Download</a>
+  </audio>
+  <audio controls>
+    <source src="tomar_jonno.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    <a href="tomar_jonno.mp3" download>Download</a>
+  </audio>
+  <audio>
+  <source src="keno_lage_shunno_mp3.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  <a href="keno_lage_shunno_mp3.mp3" download>Download</a>
+</audio>
+<audio controls>
+  <source src="canvas_mp3.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  <a href="canvas_mp3.mp3" download>Download</a>
+</audio> -->
+
+
+</body>
+
+</html>
